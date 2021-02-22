@@ -61,13 +61,15 @@ const HeaderSearch=styled.div`
     padding:5px 50px;
     opacity:1.4;
     background-color:#421f44;
+    /* 340e36 */
     border-radius:6px;
     /* border:2px grey solid; */
     >input{
         border:none;
         color:white;
         background-color:transparent;
-        text-align:center;
+        text-align:flex-start;
+        padding-left:10px;
         min-width:30px;
         outline:none;
     }

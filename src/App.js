@@ -9,6 +9,7 @@ import {
 import Header from './components/Header'
 import styled from 'styled-components';
 import SideBar from './components/SideBar'
+import Chat from './components/Chat'
 function App() {
   return (
     <div className="App">
@@ -21,7 +22,7 @@ function App() {
           <SideBar/>
           <Switch>
               <Route path="/">
-
+                <Chat/>
               </Route>
           </Switch>
         </AppBody>
@@ -32,4 +33,6 @@ function App() {
 }
 export default App;
 
-const AppBody=styled.div``;
+const AppBody=styled.div`
+  display:flex;
+`;

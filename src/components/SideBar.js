@@ -3,9 +3,13 @@ import React from 'react'
 import CreateIcon from '@material-ui/icons/Create'
 import FiberManualIcon from '@material-ui/icons/FiberManualRecord'
 import SidebarOptionContainer from './SidebarOption'
+import AddIcon from '@material-ui/icons/Add'
 import InsertCommentIcon from '@material-ui/icons/InsertComment'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import {useCollection} from 'react-firebase-hooks/firestore'
+import {db} from '../firebase'
 function SideBar() {
+    const [channels,loading,error]=useCollection(db.collection("rooms"));
     return (
         <SideBarContainer>
             <SideBarHeader>
@@ -26,6 +30,11 @@ function SideBar() {
             <SidebarOptionContainer Icon={InsertCommentIcon} title="Apps"/>
             <hr/>
             <SidebarOptionContainer Icon={ExpandMoreIcon} title="Channels"/>
+            <hr/>
+            <SidebarOptionContainer Icon={AddIcon} title="Add Channel" addChannelOption/>
+            {channels?.docs.map(doc=>(
+                <SidebarOptionContainer key={doc.id} id={doc.id} title={doc.data().name}/>
+            ))}
         </SideBarContainer>
     )
 }
@@ -39,6 +48,12 @@ const SideBarContainer=styled.div`
     border-top:1px solid #49274b;
     max-width:260px;
     margin-top:60px;
+
+    >hr{
+        margin-top:10px;
+        margin-bottom:10px;
+        border:1px solid #49274b;
+    }
 `;
 const SideBarHeader=styled.div`
     display:flex;
