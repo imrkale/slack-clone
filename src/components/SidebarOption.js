@@ -6,9 +6,11 @@ import {enterRoom} from '../features/appSlice'
 import {useSelector} from 'react-redux'
 import {selectRoomId} from '../features/appSlice'
 
+
 function SidebarOption({Icon,title,addChannelOption,id}) {
         const dispatch=useDispatch();
         const room=useSelector(selectRoomId);
+        const ishidden=true;
         const addChannel=()=>{
         const channelName=prompt("Please Enter the Channel Name");
         if(channelName)
@@ -45,6 +47,7 @@ function SidebarOption({Icon,title,addChannelOption,id}) {
 }
 
 export default SidebarOption
+
 
 const SidebarOptionContainer=styled.div`
 display:flex;
